@@ -174,7 +174,16 @@ const App = () => {
                   of {responseThreads.length}
                 </div>
               </div>
-              <div className="mt-3 text-sm">Created by Matthew Blair</div>
+              <div className="mt-3 text-sm">
+                <a
+                  href="https://github.com/matthew-b-dev/resetera-today"
+                  target="_blank"
+                  rel="nofollow"
+                  className="hover:underline hover:text-gray-300 underline"
+                >
+                  Github: matthew-blair-dev
+                </a>
+              </div>
             </div>
           </div>
         </div>
