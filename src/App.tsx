@@ -85,15 +85,15 @@ const App = () => {
               <span className="text-gray-500">/</span>resetera
               <span className="text-gray-500">/</span>today
             </h1>
-            <p className="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
+            <p className="mb-6 text-sm md:text-lg font-normal lg:text-xl sm:px-16 xl:px-48 text-gray-400">
               24-hour statistics for Gaming Forum threads
             </p>
           </div>
 
-          <div className="overflow-x-auto w-full min-w-[250px] max-w-[850px]">
+          <div className="overflow-x-auto w-full min-w-[250px] max-w-[850px] testtest">
             <div className="w-full flex justify-between mb-2">
               <div
-                className="text-sm mt-3 underline decoration-dashed"
+                className="text-sm mt-3 underline decoration-dashed hidden sm:block pl-2"
                 title="Updated hourly"
               >
                 Last updated{' '}
@@ -107,7 +107,7 @@ const App = () => {
                 <div className="flex">
                   <label
                     htmlFor="order-by"
-                    className="block mb-2 text-sm font-medium text-white whitespace-nowrap mt-2 mr-2"
+                    className="block mb-2 text-sm font-medium text-white whitespace-nowrap mt-2 mr-2 pl-2"
                   >
                     Order by
                   </label>
@@ -150,7 +150,7 @@ const App = () => {
                 </tbody>
               </table>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between pl-2">
               <div className="flex">
                 <ReactPaginate
                   breakLabel="..."
@@ -163,8 +163,8 @@ const App = () => {
                   className="pagination-controls mt-4"
                   pageClassName="page-item-none"
                   breakClassName="page-item-none"
-                  previousLinkClassName="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
-                  nextLinkClassName="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+                  previousLinkClassName="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold md:py-2 md:px-4 py-1 px-2 rounded-l"
+                  nextLinkClassName="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold md:py-2 md:px-4 py-1 px-2 rounded-r"
                 />
                 <div className="mt-3 ml-3 hidden sm:block">
                   <span className="text-sm">Showing {itemOffset + 1} to </span>
@@ -179,7 +179,7 @@ const App = () => {
                   href="https://github.com/matthew-b-dev/resetera-today"
                   target="_blank"
                   rel="nofollow"
-                  className="hover:underline hover:text-gray-300 underline"
+                  className="hover:underline hover:text-gray-300 underline pr-2"
                 >
                   Github: matthew-blair-dev
                 </a>
