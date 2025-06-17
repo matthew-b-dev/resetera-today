@@ -3,7 +3,7 @@
   "private": false,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://matthew-b-dev.github.io/resetera-today/",
+  "homepage": "https://resetera.today",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
