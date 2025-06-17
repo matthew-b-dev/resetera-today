@@ -3,6 +3,14 @@ import commentIcon from './assets/comment_icon.svg';
 import eyeIcon from './assets/eye_icon.svg';
 
 const Rows = ({ threads }: { threads: Thread[] }) => {
+  const unknownViewsText = (
+    <span
+      title="Views have not yet been calculated"
+      className="underline decoration-dashed"
+    >
+      +?
+    </span>
+  );
   return threads.map((thread) => (
     <tr className="border-b bg-gray-800 border-gray-700">
       <th scope="row" className="px-6 py-1 font-medium text-white">
@@ -22,7 +30,9 @@ const Rows = ({ threads }: { threads: Thread[] }) => {
             className="h-[12px] mt-[5px] mr-1"
             alt="views icon"
           />
-          <div className="mr-2">{thread.viewsDelta || '?'}</div>
+          <div className="mr-2">
+            {thread.viewsDelta ? `+${thread.viewsDelta}` : unknownViewsText}
+          </div>
         </div>
         <div className="flex">
           <img
@@ -30,7 +40,7 @@ const Rows = ({ threads }: { threads: Thread[] }) => {
             className="h-[12px] mt-[5px] mr-1"
             alt="comment icon"
           />
-          <div>{thread.commentsDelta || 1}</div>
+          <div className="">+{thread.commentsDelta || 1}</div>
         </div>
       </td>
     </tr>
