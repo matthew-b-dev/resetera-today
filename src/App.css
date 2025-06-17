@@ -15,6 +15,10 @@ ul.pagination-controls {
   display: flex;
 }
 
+ul.pagination-controls.pagination-controls--mobile {
+  margin-bottom: 0rem;
+}
+
 ul.pagination-controls li.disable,
 ul.pagination-controls li.disabled a {
   cursor: default;

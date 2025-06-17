@@ -103,6 +103,22 @@ const App = () => {
                   )}
                 </span>
               </div>
+              <div className="sm:hidden pl-2">
+                <ReactPaginate
+                  breakLabel="..."
+                  nextLabel="NEXT"
+                  onPageChange={handlePageClick}
+                  pageRangeDisplayed={5}
+                  pageCount={pageCount}
+                  previousLabel="PREV"
+                  renderOnZeroPageCount={null}
+                  className="pagination-controls pagination-controls--mobile mt-2"
+                  pageClassName="page-item-none"
+                  breakClassName="page-item-none"
+                  previousLinkClassName="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold md:py-2 md:px-4 py-1 px-2 rounded-l"
+                  nextLinkClassName="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold md:py-2 md:px-4 py-1 px-2 rounded-r"
+                />
+              </div>
               <form className="max-w-sm">
                 <div className="flex">
                   <label
@@ -160,7 +176,7 @@ const App = () => {
                   pageCount={pageCount}
                   previousLabel="PREV"
                   renderOnZeroPageCount={null}
-                  className="pagination-controls mt-4"
+                  className="pagination-controls mt-4 pb-8 md:pb-0"
                   pageClassName="page-item-none"
                   breakClassName="page-item-none"
                   previousLinkClassName="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold md:py-2 md:px-4 py-1 px-2 rounded-l"
