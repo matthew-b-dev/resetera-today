@@ -82,8 +82,8 @@ const App = () => {
         <div className="flex flex-col items-center justify-center">
           <div className="">
             <h1 className="mb-4 text-3xl text-center font-extrabold leading-none tracking-tight md:text-4xl lg:text-5xl text-white">
-              <span className="text-gray-500">/</span>resetera
-              <span className="text-gray-500">/</span>today
+              resetera
+              <span className="text-gray-400">.</span>today
             </h1>
             <p className="mb-6 text-sm md:text-lg font-normal lg:text-xl sm:px-16 xl:px-48 text-gray-400">
               24-hour statistics for Gaming Forum threads
