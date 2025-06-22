@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './App.css';
 
 import axios from 'axios';
@@ -28,7 +28,7 @@ const App = () => {
     'comments'
   );
 
-  useEffect(() => {
+  const getLatest = useCallback(() => {
     setGetSnapshotResponse({
       loading: true,
       data: null,
@@ -42,7 +42,44 @@ const App = () => {
           loading: false,
           data: { ...snapshot, threads: sortByComments(snapshot.threads) },
         });
+        window.localStorage.setItem(
+          'RESETERA_TODAY_CACHED',
+          JSON.stringify({
+            ...snapshot,
+            threads: sortByComments(snapshot.threads),
+          })
+        );
       });
+  }, []);
+
+  useEffect(() => {
+    const cached = window.localStorage.getItem('RESETERA_TODAY_CACHED');
+    let parsed;
+    if (cached) {
+      try {
+        parsed = JSON.parse(cached);
+      } catch {
+        parsed = undefined;
+      }
+      if (parsed?.timestamp) {
+        const parsedDate = new Date(parsed.timestamp);
+        const now = new Date();
+        const diffMs = now.getTime() - parsedDate.getTime();
+        if (diffMs > 60 * 60 * 1000) {
+          console.log(`Cache from ${timeAgo.format(parsedDate)} has expired.`);
+          getLatest();
+        } else {
+          console.log(`Loading cache from ${timeAgo.format(parsedDate)}.`);
+          setGetSnapshotResponse({
+            loading: false,
+            data: parsed,
+          });
+        }
+      }
+    } else {
+      getLatest();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -120,7 +157,7 @@ const App = () => {
                 />
               </div>
               <form className="max-w-sm">
-                <div className="flex">
+                <div className="flex mr-1 md:mr-0">
                   <label
                     htmlFor="order-by"
                     className="block mb-2 text-sm font-medium text-white whitespace-nowrap mt-2 mr-2 pl-2"
@@ -130,16 +167,12 @@ const App = () => {
                   <select
                     id="order-by"
                     className="border text-sm rounded-lg focus:ring-blue-500 block w-full px-2 py-1 bg-gray-700 border-gray-600 placeholder-gray-400 text-white ring-blue-500 focus:border-blue-500"
+                    value={threadSort}
                     onChange={(e) =>
                       setThreadSort(e.target.value as 'comments' | 'views')
                     }
                   >
-                    <option
-                      value="comments"
-                      selected={threadSort === 'comments'}
-                    >
-                      Comments
-                    </option>
+                    <option value="comments">Comments</option>
                     <option value="views">Views</option>
                   </select>
                 </div>

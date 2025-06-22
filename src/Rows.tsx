@@ -11,8 +11,8 @@ const Rows = ({ threads }: { threads: Thread[] }) => {
       +?
     </span>
   );
-  return threads.map((thread) => (
-    <tr className="border-b bg-gray-800 border-gray-700">
+  return threads.map((thread, _) => (
+    <tr key={_} className="border-b bg-gray-800 border-gray-700">
       <th scope="row" className="px-6 py-1 font-medium text-white">
         <a
           href={thread.url}
